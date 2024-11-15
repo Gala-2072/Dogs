@@ -5,7 +5,18 @@ from PIL import  Image, ImageTk
 from io import BytesIO
 
 from bottle import response
-from pygame.examples.cursors import image
+from pyexpat.errors import messages
+
+
+def get_dog_image()
+    try:
+        response=requests.get(https://dog.ceo/api/breeds/image/random)
+        response.raise_for_status()
+        data response.json()
+        return data ['message']
+    except Exception as e:
+        mb.showerror("Ошибка", f"Возникла ошибка при запросе к API {e}"))
+        return None
 
 
 def show_image():
@@ -21,7 +32,7 @@ def show_image():
             label.config(image=img)
             label.image=img
         except Exception as e:
-            mb.showerror("Ошибка", f"Возникла ошибка {e}")
+            mb.showerror("Ошибка", f"Возникла ошибка при загрузке изображений {e}")
 
 window=Tk()
 window.title("Картинки с собачками")
